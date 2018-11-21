@@ -1,107 +1,106 @@
-<?php include ("includes/connexion.inc.php") ?>
+<?php
 
+if (isset($_COOKIE['pseudo'])) {
+	echo 'Bonjour '.$_COOKIE['pseudo'].' !';
+}
+else {
+	echo 'Notre cookie n\'est pas déclaré.';
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Micro blog</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Theme CSS -->
-    <link href="css/freelancer.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
 
 <body id="page-top" class="index">
 
-  <?php
-    include ("includes/haut.inc.php");
-  ?>
+<?php 
 
+include("includes/haut.inc.php");
+if(isset($_GET['id'])){
+    $modif = $_GET['id'];
+
+}
+ ?>
+ 
     <!-- About Section -->
+
+
+
+    <p>
+    <?php
+
+if (isset($_COOKIE['pseudo'])) {
+	echo 'Bonjour '.$_COOKIE['pseudo'].' !';
+}
+else {
+	echo 'Notre cookie n\'est pas déclaré.';
+}
+
+?>
+
+
+    </p>
+
+
+
+
     <section>
         <div class="container">
-            <div class="row">
-              <?php if(isset($_GET['id'])){ ?>
-
-                <form action="includes/update.php" method="Post">
-                    <div class="col-sm-10">
+            <div class="row">              
+                <form action="message.php" method="POST">
+                    <div class="col-sm-10">  
                         <div class="form-group">
-                            <textarea id="message" name="message" class="form-control" placeholder="Message"><?php
-                              $identifiant = $_GET['id'];
-                              $query = "SELECT * FROM messages WHERE id = '$identifiant'";
-                              $stmt = $pdo->query($query);
-                              while ($donnees = $stmt->fetch()) {
-                                echo $donnees['contenu'];
-                              }
+                            <textarea id="message" name="message" class="form-control" placeholder="">
+                            <?php 
+                            if(isset($_GET['id'])){
+                                include("includes/connexion.inc.php");
+                                $query="SELECT * FROM messages WHERE id=$modif ";
+                                $stmt=$pdo->query($query);
+                                while($data=$stmt->fetch()){
+                                    echo $data['contenu'];
+                                }
+}else{
+ echo "Messages"; 
+                            }
+   
+                            
                             ?>
+                            
                             </textarea>
-							<input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success btn-lg">Modifier</button>
-                    </div>
-                </form>
 
-              <?php
-                }
-                else{
-              ?>
 
-                <form action="includes/message.php" method="Post">
-                    <div class="col-sm-10">
-                        <div class="form-group">
-                            <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
+                            <input type="hidden" id="id" name= "id" value=" <?php if(isset($_GET['id'])){ echo $_GET['id'];}else{echo 0;} ?> "></input>
                         </div>
                     </div>
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
-                    </div>
+                    </div>                        
                 </form>
             </div>
 
-          <?php } ?>
 
             <div class="row">
-                <div class="col-md-12">
+           </br>
+           </br>
+           </br>
+           </br>
+           </br>
+           </br>
+            <?php 
 
-                    <?php
-                      $query = "SELECT * FROM messages ORDER BY date desc";
-                      $stmt = $pdo->query($query);
-                      //var_dump($stmt->fetch());
+                include("includes/connexion.inc.php");
+                $query="SELECT * FROM messages";
+                $stmt=$pdo->query($query);
+                while($data=$stmt->fetch()){
+                    
+                    echo "<blockquote>".$data['contenu']."</blockquote><a href='index.php?id=".$data['id']."'>  <button name='d' type='submit' class='btn btn-secondary'>Modifier</button> </a> <a href='includes\supprimer.php?id=".$data['id']."'> <button name='dd' type='submit' class='btn btn-secondary'>Suppresion</button>  </a>";
+                     echo gmdate("Y-m-d H:i:s", $data['date']);
+                     
 
-                      while($donnees = $stmt->fetch()){
-                          ?><blockquote>
-                              <p><?php echo $donnees['contenu'];?></p>
-                              <footer>
-                                <?php echo date('Y-m-d H:i:s', $donnees['date']);?>
-                              </footer>
-							  <a href="index.php?id=<?php echo $donnees['id'] ?>" class="btn btn-success">Modifier</a> <a href="includes/delete.php?id=<?php echo $donnees['id'] ?>" class="btn btn-danger"> Supprimer </a>
-                          </blockquote>
-                    <?php
-                      }
-                    ?>
+                }
+               
+            
+            ?>
 
 
                 </div>
@@ -109,8 +108,21 @@
         </div>
     </section>
 
-    <?php
-      include ("includes/bas.inc.php");
-    ?>
-  </body>
+<?php include("includes/bas.inc.php"); ?>
+    
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
 </html>
