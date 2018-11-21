@@ -1,7 +1,5 @@
-<?php
-
-?>
-    <footer class="text-center">
+<!-- Footer -->
+<footer class="text-center">
         <div class="footer-above">
             <div class="container">
                 <div class="row">
@@ -15,7 +13,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>
-                        <p>Micro blog est une application PHP basee sur le theme <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a>.</p>
+                        <p>Micro blog est une application PHP basée sur le thème <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a>.</p>
                     </div>
                 </div>
             </div>
@@ -31,3 +29,9 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
