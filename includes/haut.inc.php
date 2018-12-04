@@ -51,10 +51,10 @@
                         <a href="inscription.php">Inscription</a>
                         </li>
                         <li class="page-scroll">
-                        <a href="index.php">Index</a>
+                        <a href="index.php">Accueil</a>
                         </li>
                         <li class="page-scroll">
-                        <a href="includes/deco.php">Deco</a>
+                        <a href="includes/deco.php">Deconnexion</a>
                         </li>
                 </ul>
             </div>
