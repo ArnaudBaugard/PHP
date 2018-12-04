@@ -24,9 +24,5 @@ else{
     header("Location:..\index.php");
 
 }
-
-//nl2br($message);
-//htmlspecialchars($message);
-//<=&lt et > = &gt
 ?>
 
