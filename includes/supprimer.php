@@ -1,10 +1,15 @@
-<?php 
+<?php
+include ("connexion.inc.php");
 
-include("connexion.inc.php");
-$id=$_GET['id'];
-$query="DELETE FROM messages WHERE id= $id";
-$prep=$pdo->prepare($query);
-$prep->execute();
-header("Location:..\index.php");
+	$query="DELETE FROM messages WHERE id=:id; ";
+
+	$prep = $pdo->prepare($query);
+
+	$prep->bindValue(':id', $_GET['id']);
+
+	$prep->execute();
+
+header("Location:../index.php");
+
 
 ?>
