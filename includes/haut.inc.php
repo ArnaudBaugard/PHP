@@ -1,5 +1,11 @@
 <head>
 
+<!-- Auteur : Arnaud Baugard -->
+<!-- Version : 2.0 -->
+<!-- Projet : micro_blog -->
+
+<!-- Header -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -46,16 +52,16 @@
                     </li>
                     <li class="page-scroll">
                         <a href="connection.php">Connexion</a>
-                        </li>
-                        <li class="page-scroll">
+                    </li>
+                    <li class="page-scroll">
                         <a href="inscription.php">Inscription</a>
-                        </li>
-                        <li class="page-scroll">
+                    </li>
+                    <li class="page-scroll">
                         <a href="index.php">Accueil</a>
-                        </li>
-                        <li class="page-scroll">
+                    </li>
+                    <li class="page-scroll">
                         <a href="includes/deco.php">Deconnexion</a>
-                        </li>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

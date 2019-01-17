@@ -1,4 +1,10 @@
 <!-- Footer -->
+<!-- Auteur : Arnaud Baugard -->
+<!-- Version : 2.0 -->
+<!-- Projet : micro_blog -->
+
+<!-- Page footer -->
+
 <footer class="text-center">
         <div class="footer-above">
             <div class="container">
