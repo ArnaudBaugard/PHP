@@ -3,6 +3,13 @@
 <html lang="fr">
 
 
+<!-- Auteur : Arnaud Baugard -->
+<!-- Version : 2.0 -->
+<!-- Projet : micro_blog -->
+
+<!-- Page Inscription -->
+
+
 <body id="page-top" class="index">
 
 <?php include("includes/haut.inc.php"); ?>

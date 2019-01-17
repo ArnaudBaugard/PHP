@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- Auteur : Arnaud Baugard -->
+<!-- Version : 2.0 -->
+<!-- Projet : micro_blog -->
+
+<!-- Page Connexion -->
+
 
 <body id="page-top" class="index">
 
@@ -9,7 +15,7 @@
  <form action="includes/verif.php" method="POST">
 <label class="btn btn-secondary">Pseudo: <input id="pseudo" type="text" name="pseudo"/></label><br/>
 <label class="btn btn-secondary">Mot de passe: <input id="passe" type="text" name="passe"/></label><br/>
-<button type="submit" class="btn btn-success btn-lg">connexion</button>
+<button type="submit" class="btn btn-success btn-lg">Connexion</button>
 </form>
 
 
