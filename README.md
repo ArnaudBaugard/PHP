@@ -1,27 +1,27 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Freelancer](http://startbootstrap.com/template-overviews/freelancer/)
+Vous pouvez créer la base de données en important le fichier "micro_blog.sql" ou sinon lisez les instructions suivantes.
 
-[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, and a working PHP contact form.
+Créer la base de données portant le nom : micro blog
 
-## Getting Started
+Créer ensuite les 2 tables : 
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-freelancer.git`
-* Fork the repo
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contenu` varchar(255) NOT NULL,
+  `date` int(11) NOT NULL,
+  `vote` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
-## Bugs and Issues
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `pseudo` varchar(255) NOT NULL,
+  `passe` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-freelancer/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/).
+ps : N'oubliez pas de créer un utilisateur pour tester les cookies car la page inscription n'est pas faite.
 
-## Creator
+Ensuite vous pouvez envoyer un message, le modifer et le supprimer.
+Vous pouvez vous connecter et vous restez connecté sur la page même si vous rafraîchissez la page.
+Vous pouvez également voter pour un message (mais je ne l'ai pas fait en AJAX et le vote multiple est possible).
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+Les messages sont triés dans l'ordre décroissant et il y a une limite de 5 messages par page, vous pouvez changer de page en cliquant sur les différentes pages en bas du blog.
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.
