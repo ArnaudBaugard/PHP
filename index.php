@@ -77,15 +77,15 @@
         <div class="row">
 			<?php 
                 include("includes/connexion.inc.php");
-						$limite = 5;
-                        $nbr_Max_Articles = $pdo->query('SELECT id FROM messages');
-                        $nbr_Articles = $nbr_Max_Articles->rowCount();
+						$limite = 5;	// Limite de 5 messages par page //
+                        $nbr_Max_Articles = $pdo->query('SELECT id FROM messages'); 
+                        $nbr_Articles = $nbr_Max_Articles->rowCount();		// On compte le nombre de messages //
                         $nbr_Pages = ceil($nbr_Articles/$limite);
-                        if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0){
-                                $_GET['page'] = intval($_GET['page']);
-                                $page_Actuelle = $_GET['page'];
+                        if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0){		// Condition si la variable page existe, si elle n'est pas vide et si elle est > à 0 //
+                                $_GET['page'] = intval($_GET['page']);	// On met la valeur de la page en format numérique //
+                                $page_Actuelle = $_GET['page'];	// La page courante prend la valeur de la page actuelle //
                         }else{
-                                $page_Actuelle = 1;
+                                $page_Actuelle = 1;    // On associe la page courante à 1 //
                         }
                         $page_Demarrage = ($page_Actuelle-1)*$limite;
 				
@@ -110,7 +110,7 @@
 			<?php
                 for($i = 1;$i <= $nbr_Pages; $i++ ){
 					echo("<li style='list-style-type: none;'><a style=' margin-left : 50%;color : red; font-weight :bold; text-decoration : underline; font-size : 24px;' href=\"index.php?page=".$i."\"> Page ".$i." </a>");
-				}
+				} // Affichage des pages //
             ?>
 
 
