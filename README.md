@@ -1,27 +1,46 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Freelancer](http://startbootstrap.com/template-overviews/freelancer/)
+# To-do-List
 
-[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, and a working PHP contact form.
+Voici mon projet micro_blog
 
-## Getting Started
+## Base de données.
+Je vous ai donné un fichier micro_blog.sql contenant les différents tables à avoir.
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-freelancer.git`
-* Fork the repo
+Le nom de la base : micro_blog
 
-## Bugs and Issues
+Le nom des 2 tables : messages et utilisateur
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-freelancer/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/).
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contenu` varchar(255) NOT NULL,
+  `date` int(11) NOT NULL,
+  `vote` int(11) NOT NULL DEFAULT '0',
+  `fichier` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
-## Creator
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `pseudo` varchar(255) NOT NULL,
+  `passe` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+INSERT INTO `utilisateur` (`pseudo`, `passe`) VALUES
+('admin', 'admin');
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
 
-## Copyright and License
+## Fonctionnalités
 
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.
+Voici la liste des différentes fonctionnalités présentes :
+* Affichage des messages
+* Ajout de messages
+* Ajout d'images
+* Modification des messages (et des images)
+* Suppression de messages
+* Possibilité de vote (non fait en AJAX)
+* Redimensionnement d'image
+* Système de cookie
+* Possibilité d'avoir un compte. (nom : admin, passe : admin)
+
+Merci d'avoir lu jusqu'ici, et bon courage !
