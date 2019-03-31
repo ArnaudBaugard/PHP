@@ -29,7 +29,9 @@ else if($extension == 'png'){
 	$largeur = $taille[0];																
 	$hauteur = $taille[1];																
 	$height = ($width / $largeur) * $hauteur;											
-	$destination = imagecreatetruecolor($width, $height);								
+	$destination = imagecreatetruecolor($width, $height);
+	imagealphablending($destination, false );											// Renger le PNG transparent //
+	imagesavealpha($destination, true );												// Renger le PNG transparent //
 	imagecopyresampled($destination, $fichier, 0, 0, 0, 0, $width, $height, $largeur, $hauteur);					
 	imagepng($destination);
 	imagedestroy($destination);
