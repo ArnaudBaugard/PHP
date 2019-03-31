@@ -31,12 +31,29 @@
 		}
 	?>
     </p>
+	
+	<?php 
+	$filename = 'C:\Users\baugard.arnaud.IUTCB2\Documents\EasyPHP-12.1\www\micro_blog\upload\pika.jpg';
+	//echo $filename;
+	echo '</br >';
+	
+		if (file_exists($filename)){
+			//echo "<img src='upload/pika.jpg'>";
+		} else {
+			
+		}
+	
+	?>
+	
+	
+	
+	
 
     <section>
         <div class="container">
             <div class="row">    
 				<?php if(isset($_GET['id'])){ ?>
-                <form action="message.php" method="POST">
+                <form action="message.php" method="POST" enctype="multipart/form-data">
                     <div class="col-sm-10">  
                         <div class="form-group">
                             <textarea id="message" name="message" class="form-control" placeholder="Message"><?php 
@@ -49,24 +66,26 @@
                             ?>               
                             </textarea>
                             <input type="hidden" id="id" name= "id" value=" <?php if(isset($_GET['id'])){ echo $_GET['id'];}else{echo 0;} ?> "></input>
-                        </div>
+						</div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-2">	
+						<input type="file" name="avatar">		
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
-                    </div>                        
+                    </div>             
                 </form>
             </div>
 			<?php
             }
                else{
             ?>
-                <form action="message.php" method="Post">
+                <form action="message.php" method="POST" enctype="multipart/form-data">
                     <div class="col-sm-10">
                         <div class="form-group">
                             <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
                         </div>
                     </div>
                     <div class="col-sm-2">
+					<input type="file" name="avatar">
                         <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
                     </div>
                 </form>
@@ -93,7 +112,11 @@
                 $query='SELECT * FROM messages ORDER BY date desc  LIMIT '.$page_Demarrage.','.$limite;		// LIMITATION DE 5 + Affichage des messages dans l'ordre décroissant //
                 $stmt=$pdo->query($query);
                 while($donnees = $stmt->fetch()){
-                          ?><blockquote>
+					$dossier = 'upload/';
+					$file = $dossier.$donnees['fichier'];
+						if(empty($donnees['fichier'])){
+                          ?>
+							<blockquote>
                               <p><?php echo $donnees['contenu'];?></p>
                               <footer>
                                 <?php echo date('Y-m-d H:i:s', $donnees['date']);//Affichage de la date//?>			
@@ -102,15 +125,34 @@
 							  <a href="ajax_vote.php?id=<?php echo $donnees['id'] ?>" class="btn btn-primary buttonVote">Vote</a><p class="text-muted nbreVote"> Nombre de vote : <?php echo $donnees['vote'] ?></p>
 						  </blockquote>
 			<?php
-                }
+                } else {
+					?>
+							<blockquote>
+                              <p><?php echo $donnees['contenu'];?></p>
+							  <!-- <img src="upload/<?php echo $donnees['fichier']?>"> </img> -->
+							  <img src="image.php?id=<?php echo $donnees['fichier'] ?>" alt="image redimensionnée">
+                              <footer>
+                                <?php echo date('Y-m-d H:i:s', $donnees['date']);//Affichage de la date//?>			
+                              </footer> <!-- Bouton modifier / supprimer et Vote -->
+							  <a href="index.php?id=<?php echo $donnees['id'] ?>" class="btn btn-success">Modifier</a> <a href="includes/supprimer.php?id=<?php echo $donnees['id'] ?>" class="btn btn-danger"> Supprimer </a>
+							  <a href="ajax_vote.php?id=<?php echo $donnees['id'] ?>" class="btn btn-primary buttonVote">Vote</a><p class="text-muted nbreVote"> Nombre de vote : <?php echo $donnees['vote'] ?></p>
+						  </blockquote>
+					<?php
+				}}
             ?>
         </div>
     </section>
 	
 			<?php
-                for($i = 1;$i <= $nbr_Pages; $i++ ){
-					echo("<li style='list-style-type: none;'><a style=' margin-left : 50%;color : red; font-weight :bold; text-decoration : underline; font-size : 24px;' href=\"index.php?page=".$i."\"> Page ".$i." </a>");
-				} // Affichage des pages //
+			echo "<div id='pagination' style='text-align:center;'>";
+               echo "<nav aria-label='Page navigation example'>";
+					echo "<ul class='pagination justify-content-center'>";
+						for($i = 1;$i <= $nbr_Pages; $i++ ){
+							echo("<li class='page-item'><a class='page-link' href=\"index.php?page=".$i."\"> Page ".$i." </a>");
+						} // Affichage des pages //
+				echo "</ul>";
+			echo "</nav>";
+			echo "</div>";
             ?>
 
 
