@@ -43,4 +43,8 @@ Voici la liste des différentes fonctionnalités présentes :
 * Système de cookie
 * Possibilité d'avoir un compte. (nom : admin, passe : admin)
 
+## Fonctionnalités manquantes
+* Smarty
+* Regex URL
+
 Merci d'avoir lu jusqu'ici, et bon courage !
