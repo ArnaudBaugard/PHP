@@ -142,6 +142,8 @@
             ?>
         </div>
     </section>
+
+
 	
 			<?php
 			echo "<div id='pagination' style='text-align:center;'>";
@@ -154,6 +156,14 @@
 			echo "</nav>";
 			echo "</div>";
             ?>
+			
+				<div id="reseaux">
+					<h1> Mes réseaux sociaux </h1>
+						<a href="" class="sprite fb"> </a>
+						<a href="" class="sprite tw"> </a>
+						<a href="" class="sprite in"> </a>
+						<a href="" class="sprite yt"> </a>
+				</div>
 
 
 <?php include("includes/bas.inc.php"); //Include du footer// ?>

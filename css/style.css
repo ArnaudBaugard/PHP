@@ -1,15 +1,55 @@
+#reseaux{
+	position : right;
+	font-size : 16px;
+	font-weight :bold;
+	width : 100%;
+	text-align : center;
+}
 
-/*.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-}*/
+#reseaux h1 {
+	font-size : 15px;
+	border-bottom : 2px solid black;
+	padding-top : 4px;
+	padding-bottom : 20px;
+}
 
-/*.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}*/
+.sprite {
+    background-image: url("../img/sprite.png");
+    display: inline-block;
+    width: 50px; 
+	height: 50px;
+}
+
+.fb {
+    background-position: -50px 0px;
+}
+
+.fb:hover {
+    background-position: -50px -50px;
+}
+
+.tw {
+    background-position: -140px 0px;
+}
+
+.tw:hover {
+    background-position: -140px -50px;
+}
+
+.in {
+    background-position: -190px 0px;
+}
+
+.in:hover {
+    background-position: -190px -50px;
+}
+
+
+.yt {
+    background-position: -95px 0px;
+}
+
+.yt:hover {
+    background-position: -95px -50px;
+}
 
