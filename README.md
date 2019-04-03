@@ -42,6 +42,8 @@ Voici la liste des différentes fonctionnalités présentes :
 * Redimensionnement d'image
 * Système de cookie
 * Possibilité d'avoir un compte. (nom : admin, passe : admin)
+* Optimisation effectuée
+* Ajout des sprites
 
 ## Fonctionnalités manquantes
 * Smarty
